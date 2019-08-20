@@ -43,11 +43,27 @@
         board (new-board rows)]
     (prompt-empty-peg board)))
 
+(defn performance-category
+  [remaining-pegs]
+  (cond
+    (>= remaining-pegs 5) "Abysmal! Is this your first time?"
+    (= remaining-pegs 4) "Poor. Try harder."
+    (= remaining-pegs 3) "OK. You could use some strategy."
+    (= remaining-pegs 2) "Good. See if you can do better."
+    (= remaining-pegs 1) "AMAZING! You win."
+    :else (format "Remaining pegs (%s) is an unexpected number" remaining-pegs)))
+
+(defn print-performance
+  [remaining-pegs]
+  (let [result (performance-category remaining-pegs)]
+    (println (format "Result: %s" result))))
+
 (defn game-over
   [board]
   (let [remaining-pegs (count (filter :pegged (vals board)))]
     (println "Game over! You had" remaining-pegs "pegs left:")
     (print-board board)
+    (print-performance remaining-pegs)
     (println "Play again? y/n [y]")
     (let [input (get-input "y")]
       (if (= "y" input)
