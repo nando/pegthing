@@ -5,4 +5,4 @@ A game developed for the
 
 To play, just run "lein run".
 
-This fork adds the ability to "go back" or restore the board to a previous state.
+This fork adds the ability to "go back" or restore the board to a previous state using the "b" key.
