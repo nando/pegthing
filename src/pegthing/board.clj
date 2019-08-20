@@ -7,8 +7,8 @@
   "Generates lazy sequence of triangular numbers"
   ([] (tri* 0 1))
   ([sum n]
-     (let [new-sum (+ sum n)]
-       (cons new-sum (lazy-seq (tri* new-sum (inc n)))))))
+   (let [new-sum (+ sum n)]
+     (cons new-sum (lazy-seq (tri* new-sum (inc n)))))))
 
 (def tri (tri*))
 
@@ -84,6 +84,8 @@
 ;;;;
 ;; Represent board textually and print it
 ;;;;
+
+
 (def alpha-start 97)
 (def alpha-end 123)
 (def letters (map (comp str char) (range alpha-start alpha-end)))

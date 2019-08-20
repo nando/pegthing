@@ -6,4 +6,6 @@
   :dependencies [[org.clojure/clojure "1.5.1"]]
   :main ^:skip-aot pegthing.core
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:uberjar {:aot :all}}
+  :plugins [[lein-cljfmt "0.6.4"]]
+)

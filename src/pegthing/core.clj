@@ -18,10 +18,10 @@
   "Waits for user to enter text and hit enter, then cleans the input"
   ([] (get-input ""))
   ([default]
-     (let [input (clojure.string/trim (read-line))]
-       (if (empty? input)
-         default
-         (clojure.string/lower-case input)))))
+   (let [input (clojure.string/trim (read-line))]
+     (if (empty? input)
+       default
+       (clojure.string/lower-case input)))))
 
 (defn characters-as-strings
   "Given a string, return a collection consisting of each individual
@@ -76,18 +76,18 @@
   ([board] (prompt-move board board false))
   ([board old-board] (prompt-move board old-board true))
   ([board old-board can-restore]
-    (println "\nHere's your board:")
-    (print-board board)
-    (println "Move from where to where? Enter two letters:")
-    (def raw-input (get-input))
-    (let [input (map letter->pos (characters-as-strings raw-input))]
-      (if-let [new-board (pegs/make-move board (first input) (second input))]
-        (successful-move new-board board)
-        (if (or (= raw-input "b") (= raw-input "back"))
-          (restore-board board old-board can-restore)
-          (do
-            (println (format "\nInvalid move (%s). Try again:\n" raw-input))
-            (prompt-move board old-board)))))))
+   (println "\nHere's your board:")
+   (print-board board)
+   (println "Move from where to where? Enter two letters:")
+   (def raw-input (get-input))
+   (let [input (map letter->pos (characters-as-strings raw-input))]
+     (if-let [new-board (pegs/make-move board (first input) (second input))]
+       (successful-move new-board board)
+       (if (or (= raw-input "b") (= raw-input "back"))
+         (restore-board board old-board can-restore)
+         (do
+           (println (format "\nInvalid move (%s). Try again:\n" raw-input))
+           (prompt-move board old-board)))))))
 
 (defn -main
   [& args]
