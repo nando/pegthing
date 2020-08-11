@@ -96,7 +96,8 @@
   (into {}
         (filter (fn [[destination jumped]]
                   (and (not (pegged? board destination))
-                       (pegged? board jumped)))
+                       (pegged? board jumped)
+                       (pegged? board pos)))
                 (get-in board [pos :connections]))))
 
 (defn valid-move?
