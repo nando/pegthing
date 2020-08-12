@@ -249,13 +249,13 @@
 
 (defn prompt-rows
   []
-  (println "How many rows? [5]")
+  (println "Five or six rows board? [5]")
   (let [rows (Integer. (get-input 5))
         board (new-board rows)]
-    (if (> rows 4)
+    (if (contains? #{5 6} rows)
       (prompt-empty-peg board)
       (do
-        (println "Sorry, at least 5 rows are needed!! ¯\\_(ツ)_/¯")
+        (println "Sorry, only 5 or 6 rows board is supported for now!! ¯\\_(ツ)_/¯")
         (prompt-rows)))))
 
 (defn -main
