@@ -252,7 +252,11 @@
   (println "How many rows? [5]")
   (let [rows (Integer. (get-input 5))
         board (new-board rows)]
-    (prompt-empty-peg board)))
+    (if (> rows 4)
+      (prompt-empty-peg board)
+      (do
+        (println "Sorry, at least 5 rows are needed!! ¯\\_(ツ)_/¯")
+        (prompt-rows)))))
 
 (defn -main
   [& args]
