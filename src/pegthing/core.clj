@@ -50,6 +50,7 @@
     (println (format "Result: %s" result))))
 
 (defn game-over
+  "Announce the game is over and prompt to play again"
   [board]
   (let [remaining-pegs (count (filter :pegged (vals board)))]
     (println "Game over! You had" remaining-pegs "pegs left:")
